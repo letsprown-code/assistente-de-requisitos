@@ -2,7 +2,7 @@
 
 Agente de IA criado no **Microsoft Copilot Studio** para apoiar Analistas de Requisitos, Product Owners e QAs. Ele responde perguntas sobre a documentação de um produto usando apenas a base de conhecimento (RAG) e revisa critérios de aceite escritos em BDD (Dado/Quando/Então).
 
-> Projeto de portfólio em construção. Todos os documentos usados são de um **produto fictício**; nenhum dado de empresa ou cliente real faz parte deste repositório.
+> Projeto de portfólio em construção. Todos os documentos usados são do **Clube Aurora**, um programa de pontos fictício; nenhum dado de empresa ou cliente real faz parte deste repositório.
 
 ## O que o agente faz
 
@@ -30,9 +30,10 @@ Agente de IA criado no **Microsoft Copilot Studio** para apoiar Analistas de Req
 - [x] Agente criado com instruções, sem acesso à web e sem ferramentas externas
 - [x] Definição do agente versionada no repositório
 - [x] Primeiro caso de teste registrado
-- [ ] Documentos do produto fictício (base de conhecimento)
+- [x] Documentos do produto fictício (base de conhecimento)
+- [x] Plano de testes com 11 perguntas e respostas esperadas
+- [ ] Base de conhecimento carregada no Copilot Studio e testes executados
 - [ ] Mapeamento do processo em BPMN
-- [ ] Bateria de testes de qualidade das respostas
 
 ## Autora
 
