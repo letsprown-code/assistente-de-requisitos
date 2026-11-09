@@ -7,3 +7,4 @@ O plano com as próximas perguntas está em [plano-de-testes.md](plano-de-testes
 | Caso | Cenário | Resultado |
 | --- | --- | --- |
 | [01](caso-01-criterio-vago-sem-documentacao.md) | Critério de aceite vago, sem documentação na base | Aprovado |
+| [Rodada 01](resultados-rodada-01.md) | 11 perguntas sobre o Clube Aurora, com a base de conhecimento carregada | 11 de 11 aprovadas |
