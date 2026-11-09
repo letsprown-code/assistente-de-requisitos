@@ -1,0 +1,8 @@
+# Arquivos do macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Arquivos pessoais salvos pelo app do Claude (não publicar)
+Claude outputs/
