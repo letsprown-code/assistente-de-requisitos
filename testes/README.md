@@ -9,3 +9,4 @@ O plano com as próximas perguntas está em [plano-de-testes.md](plano-de-testes
 | [01](caso-01-criterio-vago-sem-documentacao.md) | Critério de aceite vago, sem documentação na base | Aprovado |
 | [Rodada 01](resultados-rodada-01.md) | 11 perguntas sobre o Clube Aurora, com a base de conhecimento carregada | 11 de 11 aprovadas |
 | [Rodada 02](resultados-rodada-02.md) | Reteste de T04 e T11 depois do ajuste de objetividade nas instruções | 2 de 2 aprovadas, respostas mais curtas |
+| [Rodada 03](resultados-rodada-03.md) | Integração com Power Automate: registrar pendência só com aceite e sem duplicar | 3 de 3 aprovadas |
