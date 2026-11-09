@@ -1,0 +1,30 @@
+mcs.metadata:
+  componentName: Registrar pendencia de regra
+  description: Registra na lista Pendências Clube Aurora (Microsoft Lists) uma regra de negócio que a documentação do produto não define, para o Product Owner decidir. Use somente depois de confirmar que a regra não está nos documentos nem nas pendências existentes e depois que o usuário aceitar o registro.
+kind: WorkflowTool
+workflowId: 9d4722ca-dd2f-63f5-bb7f-d39ee3986e7f
+toolInputs:
+  - name: text
+    displayName: Pergunta
+    description: Pergunta ou critério do usuário que a documentação não responde
+
+  - name: text_1
+    displayName: Historia
+    description: "Código da história de usuário relacionada (ex.: HU-04), ou vazio se não houver"
+
+  - name: text_2
+    displayName: Documento
+    description: "Documento ou regra consultada (ex.: 02-regras-de-negocio.md, RN-11)"
+
+  - name: text_3
+    displayName: Descricao
+    description: Resumo do que a documentação não define e precisa de decisão do Product Owner
+
+toolOutputs:
+  - name: text
+    displayName: Registro
+
+connectionProperties:
+  $kind: ConnectionProperties
+  diagnostics:
+  mode: Invoker

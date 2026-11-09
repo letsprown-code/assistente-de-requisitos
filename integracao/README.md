@@ -62,6 +62,10 @@ Ferramenta ligada ao agente, com a descrição que orienta quando usar e as entr
 | O que falta definir | Várias linhas de texto |
 | Situação | Escolha: Aberta (padrão) ou Decidida |
 
+## Definição do fluxo
+
+A definição completa do fluxo, exportada pela extensão do Copilot Studio no VS Code, está em [`fluxo-registrar-pendencia.json`](fluxo-registrar-pendencia.json). O endereço do site, o ID da lista e o nome da conexão foram trocados por marcadores (`<seu-tenant>`, `<id-da-lista>`, `<nome-da-conexao>`). A ferramenta do agente está em [`agente/.../capabilities/tools/`](../agente/Assistente%20de%20Requisitos/capabilities/tools/).
+
 ## Resultado do teste
 
 Ver [resultados da rodada 03](../testes/resultados-rodada-03.md).

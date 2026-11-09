@@ -6,3 +6,6 @@
 
 # Arquivos pessoais salvos pelo app do Claude (não publicar)
 Claude outputs/
+
+# Definição do fluxo com o endereço do OneDrive da conta de teste (versão sem esses dados em integracao/)
+agente/Assistente de Requisitos/workflows/*/workflow.json

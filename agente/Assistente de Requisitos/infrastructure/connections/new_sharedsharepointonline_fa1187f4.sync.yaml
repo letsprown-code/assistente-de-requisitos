@@ -1,0 +1,3 @@
+connectionReferences:
+  - connectionReferenceLogicalName: new_sharedsharepointonline_fa1187f4
+    connectorId: /providers/Microsoft.PowerApps/apis/shared_sharepointonline

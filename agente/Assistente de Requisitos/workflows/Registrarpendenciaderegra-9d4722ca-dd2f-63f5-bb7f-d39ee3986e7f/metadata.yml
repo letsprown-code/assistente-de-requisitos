@@ -1,0 +1,32 @@
+﻿jsonFileName: workflows/Registrarpendenciaderegra-9d4722ca-dd2f-63f5-bb7f-d39ee3986e7f/workflow.json
+workflowId: 9d4722ca-dd2f-63f5-bb7f-d39ee3986e7f
+name: Registrar pendencia de regra
+type: 1
+description: 
+subprocess: false
+category: 5
+mode: 0
+scope: 4
+onDemand: false
+triggerOnCreate: false
+triggerOnDelete: false
+asyncAutodelete: false
+syncWorkflowLogOnFailure: false
+stateCode: 1
+statusCode: 2
+runAs: 1
+isTransacted: true
+introducedVersion: 1.0
+isCustomizable:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: iscustomizableanddeletable
+businessProcessType: 0
+isCustomProcessingStepAllowedForOtherPublishers:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: canbedeleted
+modernFlowType: 1
+primaryEntity: none
+connectionReferences:
+- new_sharedsharepointonline_fa1187f4

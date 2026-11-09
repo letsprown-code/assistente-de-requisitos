@@ -1,0 +1,1050 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "api": {
+          "name": "shared_sharepointonline"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedsharepointonline_fa1187f4"
+        },
+        "runtimeSource": "invoker",
+        "connectionName": "<nome-da-conexao>"
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "Pergunta",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true,
+                  "description": "Pergunta ou crit\u00E9rio do usu\u00E1rio que a documenta\u00E7\u00E3o n\u00E3o responde"
+                },
+                "text_1": {
+                  "title": "Historia",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true,
+                  "description": "C\u00F3digo da hist\u00F3ria de usu\u00E1rio relacionada (ex.: HU-04), ou vazio se n\u00E3o houver"
+                },
+                "text_2": {
+                  "title": "Documento",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true,
+                  "description": "Documento ou regra consultada (ex.: 02-regras-de-negocio.md, RN-11)"
+                },
+                "text_3": {
+                  "title": "Descricao",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true,
+                  "description": "Resumo do que a documenta\u00E7\u00E3o n\u00E3o define e precisa de decis\u00E3o do Product Owner"
+                }
+              },
+              "required": [
+                "text",
+                "text_1",
+                "text_2",
+                "text_3"
+              ]
+            }
+          },
+          "metadata": {
+            "associatedData": {
+              "graph": {
+                "name": "Registrar pendencia de regra",
+                "nodes": [
+                  {
+                    "id": "start-1f5e0d7b-f89b-4caf-9942-d9519ade21b6",
+                    "name": "When an agent calls the flow",
+                    "type": "start",
+                    "version": 1,
+                    "position": {
+                      "x": 250,
+                      "y": 0
+                    },
+                    "data": {
+                      "config": {
+                        "triggerType": "connector",
+                        "connector": {
+                          "apiName": "Skills",
+                          "operationName": "When_an_agent_calls_the_flow",
+                          "displayName": "When an agent calls the flow",
+                          "kind": "Skills",
+                          "inputs": {
+                            "schema": {
+                              "type": "object",
+                              "properties": {
+                                "text": {
+                                  "title": "Pergunta",
+                                  "type": "string",
+                                  "x-ms-content-hint": "TEXT",
+                                  "x-ms-dynamically-added": true,
+                                  "description": "Pergunta ou crit\u00E9rio do usu\u00E1rio que a documenta\u00E7\u00E3o n\u00E3o responde"
+                                },
+                                "text_1": {
+                                  "title": "Historia",
+                                  "type": "string",
+                                  "x-ms-content-hint": "TEXT",
+                                  "x-ms-dynamically-added": true,
+                                  "description": "C\u00F3digo da hist\u00F3ria de usu\u00E1rio relacionada (ex.: HU-04), ou vazio se n\u00E3o houver"
+                                },
+                                "text_2": {
+                                  "title": "Documento",
+                                  "type": "string",
+                                  "x-ms-content-hint": "TEXT",
+                                  "x-ms-dynamically-added": true,
+                                  "description": "Documento ou regra consultada (ex.: 02-regras-de-negocio.md, RN-11)"
+                                },
+                                "text_3": {
+                                  "title": "Descricao",
+                                  "type": "string",
+                                  "x-ms-content-hint": "TEXT",
+                                  "x-ms-dynamically-added": true,
+                                  "description": "Resumo do que a documenta\u00E7\u00E3o n\u00E3o define e precisa de decis\u00E3o do Product Owner"
+                                }
+                              },
+                              "required": [
+                                "text",
+                                "text_1",
+                                "text_2",
+                                "text_3"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "outcomes": [
+                        {
+                          "id": "default",
+                          "label": "Default",
+                          "outcomeSchema": {
+                            "type": "object",
+                            "properties": {},
+                            "required": []
+                          }
+                        }
+                      ]
+                    },
+                    "measured": {
+                      "width": 261,
+                      "height": 66
+                    }
+                  },
+                  {
+                    "id": "builtinFunction-21d5535b-c3e5-4aec-8a21-e7b01091c34b",
+                    "name": "Respond to the agent",
+                    "type": "builtinFunction",
+                    "version": 1,
+                    "position": {
+                      "x": 950,
+                      "y": 0
+                    },
+                    "data": {
+                      "config": {
+                        "operationId": "response",
+                        "operationName": "response",
+                        "displayName": "Respond to the agent",
+                        "category": "request",
+                        "categoryDisplayName": "Request",
+                        "iconUri": "",
+                        "brandColor": "",
+                        "parameters": {
+                          "schema": {
+                            "type": "object",
+                            "properties": {
+                              "text": {
+                                "title": "Registro",
+                                "type": "string",
+                                "x-ms-content-hint": "TEXT",
+                                "x-ms-dynamically-added": true
+                              }
+                            },
+                            "required": [
+                              "text"
+                            ]
+                          },
+                          "body": {
+                            "text": "Pend\u00EAncia registrada na lista com o n\u00FAmero @{outputs(\u0027connector-f27cc896-6d77-4b90-86ae-86c227e3c2cc\u0027)?[\u0027body/ID\u0027]}"
+                          }
+                        },
+                        "description": "Respond to the calling agent with typed outputs.",
+                        "kind": "Skills"
+                      },
+                      "outcomes": [
+                        {
+                          "id": "default",
+                          "label": "Default",
+                          "outcomeSchema": {
+                            "type": "object",
+                            "description": "Function output"
+                          }
+                        }
+                      ]
+                    },
+                    "measured": {
+                      "width": 240,
+                      "height": 66
+                    },
+                    "selected": true
+                  },
+                  {
+                    "id": "connector-f27cc896-6d77-4b90-86ae-86c227e3c2cc",
+                    "name": "Criar item",
+                    "type": "connector",
+                    "version": 1,
+                    "position": {
+                      "x": 587,
+                      "y": 0
+                    },
+                    "data": {
+                      "config": {
+                        "apiName": "shared_sharepointonline",
+                        "displayName": "SharePoint",
+                        "iconUri": "https://static.powerapps.com/resource/ppcr/releases/v1.0.1834/1.0.1834.5089/sharepointonline/icon.png",
+                        "brandColor": "",
+                        "operationName": "PostItem",
+                        "connectionName": "shared_sharepointonline",
+                        "operationType": "OpenApiConnection",
+                        "parametersSchema": {
+                          "type": "object",
+                          "properties": {
+                            "dataset": {
+                              "type": "string",
+                              "title": "Endere\u00E7o do Site",
+                              "x-ms-dynamic-list": {
+                                "operationId": "GetDataSets",
+                                "parameters": {},
+                                "itemsPath": "value",
+                                "itemValuePath": "Name",
+                                "itemTitlePath": "DisplayName"
+                              },
+                              "description": "Exemplo: https://contoso.sharepoint.com/sites/sitename",
+                              "minLength": 1,
+                              "x-ms-property-name-alias": "dataset"
+                            },
+                            "table": {
+                              "type": "string",
+                              "title": "Nome da Lista",
+                              "x-ms-dynamic-list": {
+                                "operationId": "GetTables",
+                                "parameters": {
+                                  "dataset": {
+                                    "parameterReference": "dataset",
+                                    "required": true
+                                  }
+                                },
+                                "itemsPath": "value",
+                                "itemValuePath": "Name",
+                                "itemTitlePath": "DisplayName"
+                              },
+                              "description": "Nome de lista do SharePoint",
+                              "minLength": 1,
+                              "x-ms-property-name-alias": "table"
+                            },
+                            "item": {
+                              "type": "object",
+                              "title": "Item",
+                              "x-ms-dynamic-properties": {
+                                "operationId": "GetTable",
+                                "parameters": {
+                                  "dataset": {
+                                    "parameterReference": "dataset",
+                                    "required": true
+                                  },
+                                  "table": {
+                                    "parameterReference": "table",
+                                    "required": true
+                                  },
+                                  "view": {
+                                    "parameterReference": "view",
+                                    "required": false
+                                  }
+                                },
+                                "itemValuePath": "Schema/Items"
+                              },
+                              "description": "Item para criar",
+                              "x-ms-property-name-alias": "item"
+                            },
+                            "view": {
+                              "type": "string",
+                              "title": "Limitar Colunas por Modo de Exibi\u00E7\u00E3o",
+                              "x-ms-dynamic-list": {
+                                "operationId": "GetTableViews",
+                                "parameters": {
+                                  "dataset": {
+                                    "parameterReference": "dataset",
+                                    "required": true
+                                  },
+                                  "table": {
+                                    "parameterReference": "table",
+                                    "required": true
+                                  }
+                                },
+                                "itemValuePath": "Name",
+                                "itemTitlePath": "DisplayName"
+                              },
+                              "description": "Evite problemas de limite de coluna usando somente colunas definidas em um modo de exibi\u00E7\u00E3o",
+                              "x-ms-visibility": "advanced",
+                              "x-ms-property-name-alias": "view"
+                            }
+                          },
+                          "required": [
+                            "dataset",
+                            "item",
+                            "table"
+                          ]
+                        },
+                        "parameters": {
+                          "dataset": "https://<seu-tenant>-my.sharepoint.com/personal/<seu-usuario>",
+                          "table": "<id-da-lista>",
+                          "item/Situacao/Value": "Aberta",
+                          "item/Title": "@triggerOutputs()?[\u0027body/text\u0027]",
+                          "item/Historia": "@triggerOutputs()?[\u0027body/text_1\u0027]",
+                          "item/Documento": "@triggerOutputs()?[\u0027body/text_2\u0027]",
+                          "item/Descricao": "@triggerOutputs()?[\u0027body/text_3\u0027]"
+                        },
+                        "resolvedDynamicSchemas": {
+                          "item": {
+                            "type": "object",
+                            "properties": {
+                              "Title": {
+                                "type": "string",
+                                "title": "Pergunta",
+                                "readOnly": false,
+                                "maxLength": 255,
+                                "x-ms-capabilities": {
+                                  "filterFunctions": [
+                                    "eq",
+                                    "startswith"
+                                  ]
+                                },
+                                "x-ms-property-name-alias": "Title"
+                              },
+                              "Historia": {
+                                "type": "string",
+                                "title": "Hist\u00F3ria",
+                                "readOnly": false,
+                                "maxLength": 255,
+                                "x-ms-capabilities": {
+                                  "filterFunctions": [
+                                    "eq",
+                                    "startswith"
+                                  ]
+                                },
+                                "x-ms-property-name-alias": "Historia"
+                              },
+                              "Documento": {
+                                "type": "string",
+                                "title": "Documento consultado",
+                                "readOnly": false,
+                                "maxLength": 255,
+                                "x-ms-capabilities": {
+                                  "filterFunctions": [
+                                    "eq",
+                                    "startswith"
+                                  ]
+                                },
+                                "x-ms-property-name-alias": "Documento"
+                              },
+                              "Descricao": {
+                                "type": "string",
+                                "title": "O que falta definir",
+                                "readOnly": false,
+                                "x-ms-property-name-alias": "Descricao"
+                              },
+                              "Situacao": {
+                                "type": "object",
+                                "title": "Situa\u00E7\u00E3o",
+                                "properties": {
+                                  "Value": {
+                                    "type": "string",
+                                    "title": "Value",
+                                    "x-ms-dynamic-list": {
+                                      "operationId": "GetEntityValues",
+                                      "parameters": {
+                                        "dataset": {
+                                          "parameterReference": "dataset",
+                                          "required": true
+                                        },
+                                        "table": {
+                                          "parameterReference": "table",
+                                          "required": true
+                                        },
+                                        "id": {
+                                          "value": "feecc51d-f77d-4d41-8202-0b327049b720"
+                                        }
+                                      },
+                                      "itemsPath": "value",
+                                      "itemValuePath": "Value",
+                                      "itemTitlePath": "Value"
+                                    },
+                                    "default": "Aberta",
+                                    "x-ms-property-name-alias": "Situacao/Value"
+                                  }
+                                },
+                                "required": [],
+                                "readOnly": false,
+                                "x-ms-capabilities": {
+                                  "filterFunctions": [
+                                    "eq"
+                                  ]
+                                },
+                                "x-ms-property-name-alias": "Situacao"
+                              },
+                              "{ContentType}": {
+                                "type": "object",
+                                "title": "Tipo de conte\u00FAdo",
+                                "properties": {
+                                  "Id": {
+                                    "type": "string",
+                                    "title": "Id",
+                                    "x-ms-dynamic-list": {
+                                      "operationId": "GetEntityValues",
+                                      "parameters": {
+                                        "dataset": {
+                                          "parameterReference": "dataset",
+                                          "required": true
+                                        },
+                                        "table": {
+                                          "parameterReference": "table",
+                                          "required": true
+                                        },
+                                        "id": {
+                                          "value": "4651e8f2-38c9-4ad0-8def-41f743f76f30"
+                                        }
+                                      },
+                                      "itemsPath": "value",
+                                      "itemValuePath": "Id",
+                                      "itemTitlePath": "Name"
+                                    },
+                                    "x-ms-property-name-alias": "{ContentType}/Id"
+                                  }
+                                },
+                                "required": [],
+                                "readOnly": false,
+                                "description": "Nome do tipo de Conte\u00FAdo do item.",
+                                "x-ms-property-name-alias": "{ContentType}"
+                              }
+                            },
+                            "required": []
+                          }
+                        }
+                      },
+                      "outcomes": [
+                        {
+                          "id": "default",
+                          "label": "Default",
+                          "outcomeSchema": {
+                            "type": "object",
+                            "properties": {
+                              "ID": {
+                                "type": "integer",
+                                "title": "ID",
+                                "readOnly": true,
+                                "format": "int64",
+                                "description": "ID do item de lista. Use esse valor para especificar o item para atuar em outras a\u00E7\u00F5es relacionadas \u00E0 lista.",
+                                "x-ms-capabilities": {
+                                  "filterFunctions": [
+                                    "eq"
+                                  ]
+                                },
+                                "x-ms-property-name-alias": "body/ID"
+                              },
+                              "Title": {
+                                "type": "string",
+                                "title": "Pergunta",
+                                "readOnly": false,
+                                "maxLength": 255,
+                                "x-ms-capabilities": {
+                                  "filterFunctions": [
+                                    "eq",
+                                    "startswith"
+                                  ]
+                                },
+                                "x-ms-property-name-alias": "body/Title"
+                              },
+                              "Historia": {
+                                "type": "string",
+                                "title": "Hist\u00F3ria",
+                                "readOnly": false,
+                                "maxLength": 255,
+                                "x-ms-capabilities": {
+                                  "filterFunctions": [
+                                    "eq",
+                                    "startswith"
+                                  ]
+                                },
+                                "x-ms-property-name-alias": "body/Historia"
+                              },
+                              "Documento": {
+                                "type": "string",
+                                "title": "Documento consultado",
+                                "readOnly": false,
+                                "maxLength": 255,
+                                "x-ms-capabilities": {
+                                  "filterFunctions": [
+                                    "eq",
+                                    "startswith"
+                                  ]
+                                },
+                                "x-ms-property-name-alias": "body/Documento"
+                              },
+                              "Descricao": {
+                                "type": "string",
+                                "title": "O que falta definir",
+                                "readOnly": false,
+                                "x-ms-property-name-alias": "body/Descricao"
+                              },
+                              "Situacao": {
+                                "type": "object",
+                                "title": "Situa\u00E7\u00E3o",
+                                "properties": {
+                                  "Value": {
+                                    "type": "string",
+                                    "title": "Value",
+                                    "x-ms-dynamic-list": {
+                                      "operationId": "GetEntityValues",
+                                      "parameters": {
+                                        "dataset": {
+                                          "parameterReference": "dataset",
+                                          "required": true
+                                        },
+                                        "table": {
+                                          "parameterReference": "table",
+                                          "required": true
+                                        },
+                                        "id": {
+                                          "value": "feecc51d-f77d-4d41-8202-0b327049b720"
+                                        }
+                                      },
+                                      "itemsPath": "value",
+                                      "itemValuePath": "Value",
+                                      "itemTitlePath": "Value"
+                                    },
+                                    "default": "Aberta",
+                                    "x-ms-property-name-alias": "body/Situacao/Value"
+                                  }
+                                },
+                                "required": [],
+                                "readOnly": false,
+                                "x-ms-capabilities": {
+                                  "filterFunctions": [
+                                    "eq"
+                                  ]
+                                },
+                                "x-ms-property-name-alias": "body/Situacao"
+                              },
+                              "Created": {
+                                "type": "string",
+                                "title": "Criado",
+                                "readOnly": true,
+                                "format": "date-time",
+                                "description": "Quando este item foi criado.",
+                                "x-ms-capabilities": {
+                                  "filterFunctions": [
+                                    "eq",
+                                    "gt",
+                                    "ge",
+                                    "lt",
+                                    "le",
+                                    "ne"
+                                  ]
+                                },
+                                "x-ms-property-name-alias": "body/Created"
+                              },
+                              "OData__ColorTag": {
+                                "type": "string",
+                                "title": "Pressione Delete para excluir o \u00EDcone.",
+                                "readOnly": true,
+                                "maxLength": 255,
+                                "x-ms-capabilities": {
+                                  "filterFunctions": [
+                                    "eq",
+                                    "startswith"
+                                  ]
+                                },
+                                "x-ms-property-name-alias": "body/OData__ColorTag"
+                              },
+                              "ComplianceAssetId": {
+                                "type": "string",
+                                "title": "ID de Ativo de Conformidade",
+                                "readOnly": true,
+                                "maxLength": 255,
+                                "x-ms-capabilities": {
+                                  "filterFunctions": [
+                                    "eq",
+                                    "startswith"
+                                  ]
+                                },
+                                "x-ms-property-name-alias": "body/ComplianceAssetId"
+                              },
+                              "Modified": {
+                                "type": "string",
+                                "title": "Modificado",
+                                "readOnly": true,
+                                "format": "date-time",
+                                "description": "Quando este item foi alterado pela \u00FAltima vez.",
+                                "x-ms-capabilities": {
+                                  "filterFunctions": [
+                                    "eq",
+                                    "gt",
+                                    "ge",
+                                    "lt",
+                                    "le",
+                                    "ne"
+                                  ]
+                                },
+                                "x-ms-property-name-alias": "body/Modified"
+                              },
+                              "Author": {
+                                "type": "object",
+                                "title": "Criado por",
+                                "properties": {
+                                  "Claims": {
+                                    "type": "string",
+                                    "title": "Claims",
+                                    "readOnly": true,
+                                    "x-ms-dynamic-list": {
+                                      "operationId": "GetEntityValues",
+                                      "parameters": {
+                                        "dataset": {
+                                          "parameterReference": "dataset",
+                                          "required": true
+                                        },
+                                        "table": {
+                                          "parameterReference": "table",
+                                          "required": true
+                                        },
+                                        "id": {
+                                          "value": "1df5e554-ec7e-46a6-901d-d85a3881cb18"
+                                        }
+                                      },
+                                      "itemsPath": "value",
+                                      "itemValuePath": "Claims",
+                                      "itemTitlePath": "DisplayName"
+                                    },
+                                    "description": "Identificador interno do usu\u00E1rio que criou este item.",
+                                    "x-ms-property-name-alias": "body/Author/Claims"
+                                  },
+                                  "DisplayName": {
+                                    "type": "string",
+                                    "title": "DisplayName",
+                                    "readOnly": true,
+                                    "description": "O nome do usu\u00E1rio que criou este item.",
+                                    "x-ms-capabilities": {
+                                      "filterFunctions": [
+                                        "eq",
+                                        "startswith"
+                                      ]
+                                    },
+                                    "x-ms-property-name-alias": "body/Author/DisplayName"
+                                  },
+                                  "Email": {
+                                    "type": "string",
+                                    "title": "Email",
+                                    "readOnly": true,
+                                    "format": "email",
+                                    "description": "Endere\u00E7o de email do usu\u00E1rio que criou este item.",
+                                    "x-ms-capabilities": {
+                                      "filterFunctions": [
+                                        "eq",
+                                        "startswith"
+                                      ]
+                                    },
+                                    "x-ms-property-name-alias": "body/Author/Email"
+                                  },
+                                  "Picture": {
+                                    "type": "string",
+                                    "title": "Picture",
+                                    "readOnly": true,
+                                    "format": "uri",
+                                    "description": "Vincular a uma imagem do usu\u00E1rio que criou este item.",
+                                    "x-ms-property-name-alias": "body/Author/Picture"
+                                  },
+                                  "Department": {
+                                    "type": "string",
+                                    "title": "Department",
+                                    "readOnly": true,
+                                    "description": "Nome do departamento do usu\u00E1rio que criou este item.",
+                                    "x-ms-property-name-alias": "body/Author/Department"
+                                  },
+                                  "JobTitle": {
+                                    "type": "string",
+                                    "title": "JobTitle",
+                                    "readOnly": true,
+                                    "description": "Cargo do usu\u00E1rio que criou este item.",
+                                    "x-ms-property-name-alias": "body/Author/JobTitle"
+                                  }
+                                },
+                                "required": [],
+                                "readOnly": true,
+                                "description": "O usu\u00E1rio que criou este item.",
+                                "x-ms-capabilities": {
+                                  "filterFunctions": [
+                                    "eq"
+                                  ]
+                                },
+                                "x-ms-property-name-alias": "body/Author"
+                              },
+                              "Editor": {
+                                "type": "object",
+                                "title": "Modificado por",
+                                "properties": {
+                                  "Claims": {
+                                    "type": "string",
+                                    "title": "Claims",
+                                    "readOnly": true,
+                                    "x-ms-dynamic-list": {
+                                      "operationId": "GetEntityValues",
+                                      "parameters": {
+                                        "dataset": {
+                                          "parameterReference": "dataset",
+                                          "required": true
+                                        },
+                                        "table": {
+                                          "parameterReference": "table",
+                                          "required": true
+                                        },
+                                        "id": {
+                                          "value": "d31655d1-1d5b-4511-95a1-7a09e9b75bf2"
+                                        }
+                                      },
+                                      "itemsPath": "value",
+                                      "itemValuePath": "Claims",
+                                      "itemTitlePath": "DisplayName"
+                                    },
+                                    "description": "Identificador interno do usu\u00E1rio que alterou este item pela \u00FAltima vez.",
+                                    "x-ms-property-name-alias": "body/Editor/Claims"
+                                  },
+                                  "DisplayName": {
+                                    "type": "string",
+                                    "title": "DisplayName",
+                                    "readOnly": true,
+                                    "description": "O nome do usu\u00E1rio que alterou este item pela \u00FAltima vez.",
+                                    "x-ms-capabilities": {
+                                      "filterFunctions": [
+                                        "eq",
+                                        "startswith"
+                                      ]
+                                    },
+                                    "x-ms-property-name-alias": "body/Editor/DisplayName"
+                                  },
+                                  "Email": {
+                                    "type": "string",
+                                    "title": "Email",
+                                    "readOnly": true,
+                                    "format": "email",
+                                    "description": "Endere\u00E7o de email do usu\u00E1rio que alterou este item pela \u00FAltima vez.",
+                                    "x-ms-capabilities": {
+                                      "filterFunctions": [
+                                        "eq",
+                                        "startswith"
+                                      ]
+                                    },
+                                    "x-ms-property-name-alias": "body/Editor/Email"
+                                  },
+                                  "Picture": {
+                                    "type": "string",
+                                    "title": "Picture",
+                                    "readOnly": true,
+                                    "format": "uri",
+                                    "description": "Link para uma imagem do usu\u00E1rio que alterou este item pela \u00FAltima vez.",
+                                    "x-ms-property-name-alias": "body/Editor/Picture"
+                                  },
+                                  "Department": {
+                                    "type": "string",
+                                    "title": "Department",
+                                    "readOnly": true,
+                                    "description": "Nome do departamento do usu\u00E1rio que alterou este item pela \u00FAltima vez.",
+                                    "x-ms-property-name-alias": "body/Editor/Department"
+                                  },
+                                  "JobTitle": {
+                                    "type": "string",
+                                    "title": "JobTitle",
+                                    "readOnly": true,
+                                    "description": "Cargo do usu\u00E1rio que alterou este item pela \u00FAltima vez.",
+                                    "x-ms-property-name-alias": "body/Editor/JobTitle"
+                                  }
+                                },
+                                "required": [],
+                                "readOnly": true,
+                                "description": "O usu\u00E1rio que alterou este item pela \u00FAltima vez.",
+                                "x-ms-capabilities": {
+                                  "filterFunctions": [
+                                    "eq"
+                                  ]
+                                },
+                                "x-ms-property-name-alias": "body/Editor"
+                              },
+                              "{Identifier}": {
+                                "type": "string",
+                                "title": "Identificador",
+                                "readOnly": true,
+                                "description": "Valor que pode ser usado em a\u00E7\u00F5es relacionadas ao arquivo para selecionar um arquivo.",
+                                "x-ms-property-name-alias": "body/{Identifier}"
+                              },
+                              "{IsFolder}": {
+                                "type": "boolean",
+                                "title": "\u00C9 pasta",
+                                "readOnly": true,
+                                "description": "Verdadeiro quando o item for uma pasta, caso contr\u00E1rio, \u00E9 falso.",
+                                "x-ms-property-name-alias": "body/{IsFolder}"
+                              },
+                              "{Link}": {
+                                "type": "string",
+                                "title": "Link para o item",
+                                "readOnly": true,
+                                "description": "Link que pode ser usado para acessar o arquivo ou item de lista. Somente as pessoas com permiss\u00F5es para o item ser\u00E3o capazes de abrir o link.",
+                                "x-ms-property-name-alias": "body/{Link}"
+                              },
+                              "{Name}": {
+                                "type": "string",
+                                "title": "Nome",
+                                "readOnly": true,
+                                "description": "O nome do arquivo do item em bibliotecas de documentos exibe o nome do item nas listas.",
+                                "x-ms-property-name-alias": "body/{Name}"
+                              },
+                              "{FilenameWithExtension}": {
+                                "type": "string",
+                                "title": "Nome de arquivo com extens\u00E3o",
+                                "readOnly": true,
+                                "description": "Para bibliotecas, retorna o nome do arquivo incluindo a extens\u00E3o. Para listas, retorna a propriedade de t\u00EDtulo.",
+                                "x-ms-property-name-alias": "body/{FilenameWithExtension}"
+                              },
+                              "{Path}": {
+                                "type": "string",
+                                "title": "Caminho da pasta",
+                                "readOnly": true,
+                                "description": "Caminho para a pasta em que o item se encontra em rela\u00E7\u00E3o ao endere\u00E7o do site.",
+                                "x-ms-property-name-alias": "body/{Path}"
+                              },
+                              "{FullPath}": {
+                                "type": "string",
+                                "title": "Caminho Completo",
+                                "readOnly": true,
+                                "description": "Caminho completo de um item, pasta ou arquivo",
+                                "x-ms-property-name-alias": "body/{FullPath}"
+                              },
+                              "{ModerationStatus}": {
+                                "type": "string",
+                                "title": "Status de aprova\u00E7\u00E3o de conte\u00FAdo",
+                                "readOnly": true,
+                                "description": "Status de aprova\u00E7\u00E3o de conte\u00FAdo. Pode ser um dos seguintes: rascunho, pendente, aprovado ou rejeitado",
+                                "x-ms-property-name-alias": "body/{ModerationStatus}"
+                              },
+                              "{ModerationComment}": {
+                                "type": "string",
+                                "title": "Coment\u00E1rios associados \u00E0 aprova\u00E7\u00E3o de conte\u00FAdo deste item de lista",
+                                "readOnly": true,
+                                "description": "Os coment\u00E1rios associados \u00E0 modera\u00E7\u00E3o do item da lista.",
+                                "x-ms-property-name-alias": "body/{ModerationComment}"
+                              },
+                              "{ContentType}": {
+                                "type": "object",
+                                "title": "Tipo de conte\u00FAdo",
+                                "properties": {
+                                  "Id": {
+                                    "type": "string",
+                                    "title": "Id",
+                                    "x-ms-dynamic-list": {
+                                      "operationId": "GetEntityValues",
+                                      "parameters": {
+                                        "dataset": {
+                                          "parameterReference": "dataset",
+                                          "required": true
+                                        },
+                                        "table": {
+                                          "parameterReference": "table",
+                                          "required": true
+                                        },
+                                        "id": {
+                                          "value": "4651e8f2-38c9-4ad0-8def-41f743f76f30"
+                                        }
+                                      },
+                                      "itemsPath": "value",
+                                      "itemValuePath": "Id",
+                                      "itemTitlePath": "Name"
+                                    },
+                                    "x-ms-property-name-alias": "body/{ContentType}/Id"
+                                  },
+                                  "Name": {
+                                    "type": "string",
+                                    "title": "Name",
+                                    "readOnly": true,
+                                    "x-ms-property-name-alias": "body/{ContentType}/Name"
+                                  }
+                                },
+                                "required": [],
+                                "readOnly": false,
+                                "description": "Nome do tipo de Conte\u00FAdo do item.",
+                                "x-ms-property-name-alias": "body/{ContentType}"
+                              },
+                              "{HasAttachments}": {
+                                "type": "boolean",
+                                "title": "Tem anexos",
+                                "readOnly": true,
+                                "description": "Indica a presen\u00E7a de anexos no item.",
+                                "x-ms-property-name-alias": "body/{HasAttachments}"
+                              },
+                              "{VersionNumber}": {
+                                "type": "string",
+                                "title": "N\u00FAmero da vers\u00E3o",
+                                "readOnly": true,
+                                "description": "O n\u00FAmero da vers\u00E3o do arquivo ou do item de lista.",
+                                "x-ms-property-name-alias": "body/{VersionNumber}"
+                              },
+                              "{TriggerWindowStartToken}": {
+                                "type": "string",
+                                "title": "Token de In\u00EDcio da Janela de Acionamento",
+                                "readOnly": true,
+                                "description": "Um token expressando a hora da \u00FAltima verifica\u00E7\u00E3o de fluxo. Use isto se desejar verificar se uma ou mais colunas foram modificadas desde a \u00FAltima verifica\u00E7\u00E3o de fluxo.",
+                                "x-ms-property-name-alias": "body/{TriggerWindowStartToken}"
+                              },
+                              "{TriggerWindowEndToken}": {
+                                "type": "string",
+                                "title": "Token de Fim da Janela de Acionamento",
+                                "readOnly": true,
+                                "description": "Um token expressando a hora da verifica\u00E7\u00E3o de fluxo atual. Use isto se desejar verificar se uma ou mais colunas foram modificadas desde a \u00FAltima verifica\u00E7\u00E3o de fluxo.",
+                                "x-ms-property-name-alias": "body/{TriggerWindowEndToken}"
+                              }
+                            },
+                            "required": []
+                          }
+                        }
+                      ]
+                    },
+                    "measured": {
+                      "width": 240,
+                      "height": 66
+                    }
+                  }
+                ],
+                "edges": [
+                  {
+                    "id": "edge-start-1f5e0d7b-f89b-4caf-9942-d9519ade21b6-connector-f27cc896-6d77-4b90-86ae-86c227e3c2cc",
+                    "source": "start-1f5e0d7b-f89b-4caf-9942-d9519ade21b6",
+                    "target": "connector-f27cc896-6d77-4b90-86ae-86c227e3c2cc"
+                  },
+                  {
+                    "id": "edge-connector-f27cc896-6d77-4b90-86ae-86c227e3c2cc-builtinFunction-21d5535b-c3e5-4aec-8a21-e7b01091c34b",
+                    "source": "connector-f27cc896-6d77-4b90-86ae-86c227e3c2cc",
+                    "target": "builtinFunction-21d5535b-c3e5-4aec-8a21-e7b01091c34b"
+                  }
+                ],
+                "connectionReferences": {
+                  "shared_sharepointonline": {
+                    "api": {
+                      "name": "shared_sharepointonline"
+                    },
+                    "connection": {
+                      "connectionReferenceLogicalName": "new_sharedsharepointonline_fa1187f4"
+                    },
+                    "runtimeSource": "invoker",
+                    "connectionName": "<nome-da-conexao>"
+                  }
+                }
+              },
+              "nodeActionMapping": {
+                "connector-f27cc896-6d77-4b90-86ae-86c227e3c2cc": [
+                  "Criar_item"
+                ],
+                "builtinFunction-21d5535b-c3e5-4aec-8a21-e7b01091c34b": [
+                  "Respond_to_the_agent"
+                ]
+              },
+              "canvasOrientation": "horizontal"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Criar_item": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://<seu-tenant>-my.sharepoint.com/personal/<seu-usuario>",
+              "table": "<id-da-lista>",
+              "item/Situacao/Value": "Aberta",
+              "item/Title": "@triggerOutputs()?[\u0027body/text\u0027]",
+              "item/Historia": "@triggerOutputs()?[\u0027body/text_1\u0027]",
+              "item/Documento": "@triggerOutputs()?[\u0027body/text_2\u0027]",
+              "item/Descricao": "@triggerOutputs()?[\u0027body/text_3\u0027]"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "PostItem"
+            }
+          },
+          "metadata": {
+            "description": "Criar item",
+            "nodeId": "connector-f27cc896-6d77-4b90-86ae-86c227e3c2cc"
+          }
+        },
+        "Respond_to_the_agent": {
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "Registro",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text"
+              ]
+            },
+            "statusCode": 200,
+            "body": {
+              "text": "Pend\u00EAncia registrada na lista com o n\u00FAmero @{outputs(\u0027Criar_item\u0027)?[\u0027body/ID\u0027]}"
+            }
+          },
+          "runAfter": {
+            "Criar_item": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "description": "Respond to the agent",
+            "nodeId": "builtinFunction-21d5535b-c3e5-4aec-8a21-e7b01091c34b"
+          }
+        }
+      },
+      "outputs": {},
+      "metadata": {
+        "telemetryMetadata": {
+          "creationSource": "WorkflowDesigner",
+          "modifiedSources": "WorkflowDesigner"
+        }
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}
