@@ -7,6 +7,10 @@ configuration:
   settings:
     WorkIqAddedByDefault: false
 
+  isAgentConnectable: true
+  aISettings:
+    contentModeration: Medium
+
   recognizer:
     kind: CLICopilotRecognizer
 
@@ -28,6 +32,22 @@ configuration:
             Fora do escopo: assuntos que não sejam o produto documentado ou a escrita de requisitos e critérios de aceite. Nesses casos, explique educadamente que só ajuda com esses temas.
 
             Tom: claro, objetivo e em português do Brasil. Use listas curtas quando ajudar a leitura. Se a pergunta estiver incompleta, faça uma pergunta de esclarecimento antes de responder.
+
+            Objetividade:
+            - Responda primeiro exatamente o que foi perguntado, em poucas linhas, citando a regra e o documento.
+            - Traga regras relacionadas só quando elas mudarem a resposta. Não liste pendências que não tenham relação com a pergunta.
+            - Na revisão de critérios de aceite, sugira no máximo 4 cenários, a menos que o usuário peça mais.
+
+    greetingText: Olá! Sou a Assistente do Clube Aurora. Posso tirar dúvidas sobre regras de negócio, histórias de usuário e critérios de aceite, e revisar critérios no formato Dado/Quando/Então.
+    conversationStarters:
+      - title: Calcular pontos
+        text: Sou nível Prata. Quantos pontos ganho numa compra de R$ 250,00 em produtos pelo app?
+
+      - title: Limite de resgate
+        text: Tenho 1.000 pontos. Posso usar todos num pedido de R$ 80,00?
+
+      - title: Revisar critério
+        text: "Revise este critério: Dado que tenho pontos, quando resgatar, então ganho desconto."
 
     web:
       enableWebSearch: false

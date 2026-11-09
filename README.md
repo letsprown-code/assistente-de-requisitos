@@ -33,8 +33,8 @@ Agente de IA criado no **Microsoft Copilot Studio** para apoiar Analistas de Req
 - [x] Documentos do produto fictício (base de conhecimento)
 - [x] Plano de testes com 11 perguntas e respostas esperadas
 - [x] Base de conhecimento carregada no Copilot Studio e primeira rodada de testes: 11 de 11 aprovadas ([resultados](testes/resultados-rodada-01.md))
-- [ ] Ajuste das instruções para respostas mais objetivas e segunda rodada de testes
-- [ ] Mapeamento do processo em BPMN
+- [x] Ajuste das instruções para respostas mais objetivas, saudação em português e prompts sugeridos; segunda rodada de testes aprovada ([resultados](testes/resultados-rodada-02.md))
+- [x] Mapeamento do processo em BPMN
 
 ## Autora
 
